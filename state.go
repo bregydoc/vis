@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"strings"
 	"time"
@@ -22,25 +21,26 @@ import (
 
 // RenvestgyState represents a global state of renvestgy
 type RenvestgyState struct {
-	Version   string
-	Timestamp time.Time
+	Version   string    `json:"version"`
+	Timestamp time.Time `json:"timestamp"`
 
-	WalletPulicKey common.Address
-	PrivateKey     string
+	WalletPulicKey common.Address `json:"wallet_pulic_key"`
+	PrivateKey     string         `json:"private_key"`
 
-	Investors  []*Investor
-	Developers []*Developer
-	RGYs       []*RGYx
+	Investors  []*Investor  `json:"investors"`
+	Developers []*Developer `json:"developers"`
+	RGYs       []*RGYx      `json:"rgys"`
 
-	HTTPEthClient *ethclient.Client `json:"-"`
-	WSEthClient   *ethclient.Client `json:"-"`
+	HTTPEthClient *ethclient.Client   `json:"-"`
+	WSEthClient   *ethclient.Client   `json:"-"`
+	Events        chan RenvestgyEvent `json:"-"`
 }
 
 // RenvestgyEvent is an renvestgy event
 type RenvestgyEvent struct {
 	Timestamp time.Time
 	Type      string
-	Info      string
+	Data      interface{}
 }
 
 // NewRenvestgyState returns a new instance of renvestgy state
@@ -58,6 +58,7 @@ func NewRenvestgyState(c context.Context, baseURL string, privateKey string, eve
 	s := &RenvestgyState{
 		HTTPEthClient: clientHTTP,
 		WSEthClient:   clientWS,
+		Events:        events,
 	}
 
 	err = s.loadState(".")
@@ -89,28 +90,33 @@ func NewRenvestgyState(c context.Context, baseURL string, privateKey string, eve
 			}
 
 			go func() {
+				log.Println("[STATE] RGY " + contract.String() + " suscribed to events")
 				for {
 					select {
 					case err := <-sub.Err():
 						log.Fatal(err)
 					case vLog := <-logs:
-
 						contractAbi, err := abi.JSON(strings.NewReader(string(rgy.RgyABI)))
 						if err != nil {
 							log.Fatal(err)
 						}
 
-						event := new(rgy.RgyShareSold)
-						err = contractAbi.Unpack(event, "ShareSold", vLog.Data)
-						if err != nil {
-							log.Fatal(err)
+						eventShareSold := new(rgy.RgyShareSold)
+						eventAvailableToTransferChange := new(rgy.RgyAvailableToTransferChange)
+
+						if err = contractAbi.Unpack(eventShareSold, "ShareSold", vLog.Data); err == nil {
+							events <- RenvestgyEvent{
+								Timestamp: time.Now(),
+								Type:      "ShareSold",
+								Data:      eventShareSold,
+							}
+						} else if err = contractAbi.Unpack(eventAvailableToTransferChange, "AvailableToTransferChange", vLog.Data); err == nil {
+							events <- RenvestgyEvent{
+								Timestamp: time.Now(),
+								Type:      "AvailableToTransferChange",
+								Data:      eventAvailableToTransferChange,
+							}
 						}
-						events <- RenvestgyEvent{
-							Timestamp: time.Now(),
-							Type:      "new sold",
-							Info:      fmt.Sprintf("to: %s, how: %s", event.To.Hex(), event.How),
-						}
-						fmt.Println(event.To.Hex(), event.How)
 					}
 				}
 			}()

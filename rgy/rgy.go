@@ -28,19 +28,19 @@ var (
 )
 
 // RgyABI is the input ABI used to generate the binding from.
-const RgyABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getGenesis\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAvailableShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"how\",\"type\":\"uint256\"}],\"name\":\"sellShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getSoldShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"availableToTransfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_name\",\"type\":\"string\"},{\"name\":\"_shares\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_how\",\"type\":\"uint256\"}],\"name\":\"ShareSold\",\"type\":\"event\"}]"
+const RgyABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"cost\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getGenesis\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAvailableShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"shareholders\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"how\",\"type\":\"uint256\"}],\"name\":\"sellShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getSoldShares\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"developer\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"availableToTransfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"balance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_name\",\"type\":\"string\"},{\"name\":\"_developer\",\"type\":\"address\"},{\"name\":\"_shares\",\"type\":\"uint256\"},{\"name\":\"_cost\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_how\",\"type\":\"uint256\"}],\"name\":\"ShareSold\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_available\",\"type\":\"bool\"}],\"name\":\"AvailableToTransferChange\",\"type\":\"event\"}]"
 
 // RgyBin is the compiled bytecode used for deploying new contracts.
-var RgyBin = "0x60806040526000600660006101000a81548160ff02191690831515021790555034801561002b57600080fd5b5060405161098b38038061098b8339818101604052604081101561004e57600080fd5b81019080805164010000000081111561006657600080fd5b8281019050602081018481111561007c57600080fd5b815185600182028301116401000000008211171561009957600080fd5b505092919060200180519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550816003908051906020019061010492919061011a565b50806004819055508060058190555050506101bf565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061015b57805160ff1916838001178555610189565b82800160010185558215610189579182015b8281111561018857825182559160200191906001019061016d565b5b509050610196919061019a565b5090565b6101bc91905b808211156101b85760008160009055506001016101a0565b5090565b90565b6107bd806101ce6000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c8063b51d05341161005b578063b51d053414610141578063ba0aef15146101a3578063d57d0d39146101c1578063e3d670d7146101e35761007d565b806306fdde03146100825780631a43bcb514610105578063817bc0cb14610123575b600080fd5b61008a61023b565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100ca5780820151818401526020810190506100af565b50505050905090810190601f1680156100f75780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61010d6102d9565b6040518082815260200191505060405180910390f35b61012b6102e3565b6040518082815260200191505060405180910390f35b61018d6004803603604081101561015757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506102ed565b6040518082815260200191505060405180910390f35b6101ab6106b7565b6040518082815260200191505060405180910390f35b6101c961075d565b604051808215151515815260200191505060405180910390f35b610225600480360360208110156101f957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610770565b6040518082815260200191505060405180910390f35b60038054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102d15780601f106102a6576101008083540402835291602001916102d1565b820191906000526020600020905b8154815290600101906020018083116102b457829003601f168201915b505050505081565b6000600454905090565b6000600554905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146103b1576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f796f7520617265206e6f742052656e766573746779000000000000000000000081525060200191505060405180910390fd5b816005541015610429576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260118152602001807f696e7375666963656e7420666f756e647300000000000000000000000000000081525060200191505060405180910390fd5b81600160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555081600560008282540392505081905550600060055410156104ff576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600c8152602001807f696e76616c69642073656c6c000000000000000000000000000000000000000081525060200191505060405180910390fd5b600060646004546005548161051057fe5b040290506014811015610539576001600660006101000a81548160ff0219169083151502179055505b600080905060008090505b6002805490508110156105d2578573ffffffffffffffffffffffffffffffffffffffff166002828154811061057557fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156105c557600191506105d2565b8080600101915050610544565b508061063f5760028590806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505b7fe8bb4edfb49cb224db3d7d51f707c053865322c038a54cfcfd81969d0eb1f0138585604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a16005549250505092915050565b60008060008090505b6002805490508110156107555760016000600283815481106106de57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020548201915080806001019150506106c0565b508091505090565b600660009054906101000a900460ff1681565b6001602052806000526040600020600091509050548156fea265627a7a72305820a1e4a1aef7c116b365e0d179de9315dcc7490c3ffc31f01e3dc30f69872042cd64736f6c634300050a0032"
+var RgyBin = "0x60806040526000600860006101000a81548160ff02191690831515021790555034801561002b57600080fd5b50604051610b92380380610b928339818101604052608081101561004e57600080fd5b81019080805164010000000081111561006657600080fd5b8281019050602081018481111561007c57600080fd5b815185600182028301116401000000008211171561009957600080fd5b5050929190602001805190602001909291908051906020019092919080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508360049080519060200190610118929190610178565b5081600581905550816006819055508060078190555082600360006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050505061021d565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106101b957805160ff19168380011785556101e7565b828001600101855582156101e7579182015b828111156101e65782518255916020019190600101906101cb565b5b5090506101f491906101f8565b5090565b61021a91905b808211156102165760008160009055506001016101fe565b5090565b90565b6109668061022c6000396000f3fe608060405234801561001057600080fd5b506004361061009e5760003560e01c8063b51d053411610066578063b51d0534146101ee578063ba0aef1514610250578063ca4b208b1461026e578063d57d0d39146102b8578063e3d670d7146102da5761009e565b806306fdde03146100a357806313faede6146101265780631a43bcb514610144578063817bc0cb14610162578063ab377daa14610180575b600080fd5b6100ab610332565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100eb5780820151818401526020810190506100d0565b50505050905090810190601f1680156101185780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61012e6103d0565b6040518082815260200191505060405180910390f35b61014c6103d6565b6040518082815260200191505060405180910390f35b61016a6103e0565b6040518082815260200191505060405180910390f35b6101ac6004803603602081101561019657600080fd5b81019080803590602001909291905050506103ea565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61023a6004803603604081101561020457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610426565b6040518082815260200191505060405180910390f35b61025861083a565b6040518082815260200191505060405180910390f35b6102766108e0565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102c0610906565b604051808215151515815260200191505060405180910390f35b61031c600480360360208110156102f057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610919565b6040518082815260200191505060405180910390f35b60048054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103c85780601f1061039d576101008083540402835291602001916103c8565b820191906000526020600020905b8154815290600101906020018083116103ab57829003601f168201915b505050505081565b60075481565b6000600554905090565b6000600654905090565b600281815481106103f757fe5b906000526020600020016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146104ea576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260158152602001807f796f7520617265206e6f742052656e766573746779000000000000000000000081525060200191505060405180910390fd5b816006541015610562576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260118152602001807f696e7375666963656e7420666f756e647300000000000000000000000000000081525060200191505060405180910390fd5b81600160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508160066000828254039250508190555060006006541015610638576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600c8152602001807f696e76616c69642073656c6c000000000000000000000000000000000000000081525060200191505060405180910390fd5b600060646005546006548161064957fe5b0402905060148110156106bc576001600860006101000a81548160ff0219169083151502179055507f8e456a2239436fc4247ef8e7297b79799b07eb82e43e83c44b7b8998bec80475600860009054906101000a900460ff16604051808215151515815260200191505060405180910390a15b600080905060008090505b600280549050811015610755578573ffffffffffffffffffffffffffffffffffffffff16600282815481106106f857fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156107485760019150610755565b80806001019150506106c7565b50806107c25760028590806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505b7fe8bb4edfb49cb224db3d7d51f707c053865322c038a54cfcfd81969d0eb1f0138585604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a16006549250505092915050565b60008060008090505b6002805490508110156108d857600160006002838154811061086157fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054820191508080600101915050610843565b508091505090565b600360009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600860009054906101000a900460ff1681565b6001602052806000526040600020600091509050548156fea265627a7a72305820a72ef252958f391b69c78fe4e940b9e84dfd5a6c58ffa240d7fa4370e28a294464736f6c634300050a0032"
 
 // DeployRgy deploys a new Ethereum contract, binding an instance of Rgy to it.
-func DeployRgy(auth *bind.TransactOpts, backend bind.ContractBackend, _name string, _shares *big.Int) (common.Address, *types.Transaction, *Rgy, error) {
+func DeployRgy(auth *bind.TransactOpts, backend bind.ContractBackend, _name string, _developer common.Address, _shares *big.Int, _cost *big.Int) (common.Address, *types.Transaction, *Rgy, error) {
 	parsed, err := abi.JSON(strings.NewReader(RgyABI))
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
 
-	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(RgyBin), backend, _name, _shares)
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(RgyBin), backend, _name, _developer, _shares, _cost)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -241,6 +241,58 @@ func (_Rgy *RgyCallerSession) Balance(arg0 common.Address) (*big.Int, error) {
 	return _Rgy.Contract.Balance(&_Rgy.CallOpts, arg0)
 }
 
+// Cost is a free data retrieval call binding the contract method 0x13faede6.
+//
+// Solidity: function cost() constant returns(uint256)
+func (_Rgy *RgyCaller) Cost(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _Rgy.contract.Call(opts, out, "cost")
+	return *ret0, err
+}
+
+// Cost is a free data retrieval call binding the contract method 0x13faede6.
+//
+// Solidity: function cost() constant returns(uint256)
+func (_Rgy *RgySession) Cost() (*big.Int, error) {
+	return _Rgy.Contract.Cost(&_Rgy.CallOpts)
+}
+
+// Cost is a free data retrieval call binding the contract method 0x13faede6.
+//
+// Solidity: function cost() constant returns(uint256)
+func (_Rgy *RgyCallerSession) Cost() (*big.Int, error) {
+	return _Rgy.Contract.Cost(&_Rgy.CallOpts)
+}
+
+// Developer is a free data retrieval call binding the contract method 0xca4b208b.
+//
+// Solidity: function developer() constant returns(address)
+func (_Rgy *RgyCaller) Developer(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _Rgy.contract.Call(opts, out, "developer")
+	return *ret0, err
+}
+
+// Developer is a free data retrieval call binding the contract method 0xca4b208b.
+//
+// Solidity: function developer() constant returns(address)
+func (_Rgy *RgySession) Developer() (common.Address, error) {
+	return _Rgy.Contract.Developer(&_Rgy.CallOpts)
+}
+
+// Developer is a free data retrieval call binding the contract method 0xca4b208b.
+//
+// Solidity: function developer() constant returns(address)
+func (_Rgy *RgyCallerSession) Developer() (common.Address, error) {
+	return _Rgy.Contract.Developer(&_Rgy.CallOpts)
+}
+
 // GetAvailableShares is a free data retrieval call binding the contract method 0x817bc0cb.
 //
 // Solidity: function getAvailableShares() constant returns(uint256)
@@ -345,6 +397,32 @@ func (_Rgy *RgyCallerSession) Name() (string, error) {
 	return _Rgy.Contract.Name(&_Rgy.CallOpts)
 }
 
+// Shareholders is a free data retrieval call binding the contract method 0xab377daa.
+//
+// Solidity: function shareholders(uint256 ) constant returns(address)
+func (_Rgy *RgyCaller) Shareholders(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _Rgy.contract.Call(opts, out, "shareholders", arg0)
+	return *ret0, err
+}
+
+// Shareholders is a free data retrieval call binding the contract method 0xab377daa.
+//
+// Solidity: function shareholders(uint256 ) constant returns(address)
+func (_Rgy *RgySession) Shareholders(arg0 *big.Int) (common.Address, error) {
+	return _Rgy.Contract.Shareholders(&_Rgy.CallOpts, arg0)
+}
+
+// Shareholders is a free data retrieval call binding the contract method 0xab377daa.
+//
+// Solidity: function shareholders(uint256 ) constant returns(address)
+func (_Rgy *RgyCallerSession) Shareholders(arg0 *big.Int) (common.Address, error) {
+	return _Rgy.Contract.Shareholders(&_Rgy.CallOpts, arg0)
+}
+
 // SellShares is a paid mutator transaction binding the contract method 0xb51d0534.
 //
 // Solidity: function sellShares(address to, uint256 how) returns(uint256)
@@ -364,6 +442,139 @@ func (_Rgy *RgySession) SellShares(to common.Address, how *big.Int) (*types.Tran
 // Solidity: function sellShares(address to, uint256 how) returns(uint256)
 func (_Rgy *RgyTransactorSession) SellShares(to common.Address, how *big.Int) (*types.Transaction, error) {
 	return _Rgy.Contract.SellShares(&_Rgy.TransactOpts, to, how)
+}
+
+// RgyAvailableToTransferChangeIterator is returned from FilterAvailableToTransferChange and is used to iterate over the raw logs and unpacked data for AvailableToTransferChange events raised by the Rgy contract.
+type RgyAvailableToTransferChangeIterator struct {
+	Event *RgyAvailableToTransferChange // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *RgyAvailableToTransferChangeIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(RgyAvailableToTransferChange)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(RgyAvailableToTransferChange)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *RgyAvailableToTransferChangeIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *RgyAvailableToTransferChangeIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// RgyAvailableToTransferChange represents a AvailableToTransferChange event raised by the Rgy contract.
+type RgyAvailableToTransferChange struct {
+	Available bool
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterAvailableToTransferChange is a free log retrieval operation binding the contract event 0x8e456a2239436fc4247ef8e7297b79799b07eb82e43e83c44b7b8998bec80475.
+//
+// Solidity: event AvailableToTransferChange(bool _available)
+func (_Rgy *RgyFilterer) FilterAvailableToTransferChange(opts *bind.FilterOpts) (*RgyAvailableToTransferChangeIterator, error) {
+
+	logs, sub, err := _Rgy.contract.FilterLogs(opts, "AvailableToTransferChange")
+	if err != nil {
+		return nil, err
+	}
+	return &RgyAvailableToTransferChangeIterator{contract: _Rgy.contract, event: "AvailableToTransferChange", logs: logs, sub: sub}, nil
+}
+
+// WatchAvailableToTransferChange is a free log subscription operation binding the contract event 0x8e456a2239436fc4247ef8e7297b79799b07eb82e43e83c44b7b8998bec80475.
+//
+// Solidity: event AvailableToTransferChange(bool _available)
+func (_Rgy *RgyFilterer) WatchAvailableToTransferChange(opts *bind.WatchOpts, sink chan<- *RgyAvailableToTransferChange) (event.Subscription, error) {
+
+	logs, sub, err := _Rgy.contract.WatchLogs(opts, "AvailableToTransferChange")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(RgyAvailableToTransferChange)
+				if err := _Rgy.contract.UnpackLog(event, "AvailableToTransferChange", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseAvailableToTransferChange is a log parse operation binding the contract event 0x8e456a2239436fc4247ef8e7297b79799b07eb82e43e83c44b7b8998bec80475.
+//
+// Solidity: event AvailableToTransferChange(bool _available)
+func (_Rgy *RgyFilterer) ParseAvailableToTransferChange(log types.Log) (*RgyAvailableToTransferChange, error) {
+	event := new(RgyAvailableToTransferChange)
+	if err := _Rgy.contract.UnpackLog(event, "AvailableToTransferChange", log); err != nil {
+		return nil, err
+	}
+	return event, nil
 }
 
 // RgyShareSoldIterator is returned from FilterShareSold and is used to iterate over the raw logs and unpacked data for ShareSold events raised by the Rgy contract.

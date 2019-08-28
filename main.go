@@ -2,33 +2,53 @@ package main
 
 import (
 	"context"
+	"log"
 )
 
 func main() {
 	ethNet := "127.0.0.1:7545"
-	pKey := "75bb96751e7a5c4cad9e07e3c1e578fc467b0d4f879ae8056d2096d0402265d3"
+	pKey := "1676851bac4d1fd931a1c2b1628837bd9ed28620054f54bef519fd3fbdd96275"
 
 	events := make(chan RenvestgyEvent, 1)
 
 	ctx := context.Background()
+
 	state, err := NewRenvestgyState(ctx, ethNet, pKey, events)
 	if err != nil {
 		panic(err)
 	}
 
-	err = state.getStateOfRGYs()
-	if err != nil {
-		panic(err)
-	}
-	// err = state.RegisterNewDeveloper("Energy Free 2020", common.HexToAddress("0x26f377dDF41B1E2Bd916e7Bdb52AC4214722C173"))
+	log.Println("[STATE]", state.Version)
+
+	// rgyID := "blipbl9rcvk4qlr92n6g"
+	// err = state.SellRGYToInvestor(ctx, rgyID, common.HexToAddress("0xb4eF0F9D44c2104230cA1E2CEaD2228FdeF3016b"), big.NewInt(20))
 	// if err != nil {
 	// 	panic(err)
 	// }
 
-	// devID := "bldf6q6ukpt47ddqjs7g"
-	// err = state.CreateNewRGYx(ctx, devID, "RGY0", 100)
+	// dev, err := state.RegisterNewDeveloper("EnergyVI", common.HexToAddress("0x0665a053AB38c02Aa00eAA9daEc15bFCa5f2aAB7"))
 	// if err != nil {
 	// 	panic(err)
 	// }
+
+	// devID := dev.ID
+	// err = state.CreateNewRGYx(ctx, devID, "RGYX", 500, 1000)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// err = state.getStateOfRGYs()
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// how, err := state.GetBalanceOf(ctx, "blipbl9rcvk4qlr92n6g", common.HexToAddress("0xb4eF0F9D44c2104230cA1E2CEaD2228FdeF3016b"))
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// log.Println(how)
+
+	state.launchBasicAPI(":5000")
 
 }

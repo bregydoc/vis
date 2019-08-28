@@ -4,22 +4,26 @@ contract RGYx {
   address private creator;
 
   mapping (address => uint256) public balance;
-  address[] private shareholders;
-
+  address[] public shareholders;
+  address public developer;
   string public name;
   uint256 genesisShares;
   uint256 private shares;
 
+  uint256 public cost;
+
   bool public availableToTransfer = false;
 
   event ShareSold(address _to, uint256 _how);
-  event AvailableToTransfer();
+  event AvailableToTransferChange(bool _available);
 
-  constructor (string memory _name, uint256 _shares) public {
+  constructor (string memory _name, address _developer, uint256 _shares, uint256 _cost) public {
     creator = msg.sender;
     name = _name;
     genesisShares = _shares;
     shares = _shares;
+    cost = _cost;
+    developer = _developer;
   }
 
   function sellShares(address to, uint256 how ) public returns (uint256) {
@@ -31,9 +35,10 @@ contract RGYx {
 
     require(shares >= 0, "invalid sell");
 
-    uint256 availableShares = shares/genesisShares*100;
-    if (availableShares < 20) {
+    uint256 available = shares/genesisShares*100;
+    if (available < 20) {
       availableToTransfer = true;
+      emit AvailableToTransferChange(availableToTransfer);
     }
 
     // ! existance check
@@ -59,7 +64,7 @@ contract RGYx {
 
   function getSoldShares() public view returns (uint256) {
     uint256 total;
-    
+
     for (uint i = 0; i<shareholders.length; i++) {
       total += balance[shareholders[i]];
     }
