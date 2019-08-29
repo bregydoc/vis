@@ -13,7 +13,8 @@ const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
 const useClassicState = () => {
   let [classicState, setClassicState] = useState({
     rgys: [],
-    developers: []
+    developers: [],
+    investors: []
   });
 
   let updateClassicState = () => {
@@ -22,9 +23,9 @@ const useClassicState = () => {
         const d = res.data;
         let sharesProms = [];
         let costsProms = [];
+        console.log(res.data);
         res.data.rgys.map(rgy => {
           var rgyxContract = new web3.eth.Contract(abi, rgy.contract_address);
-          console.log(rgyxContract.methods);
           const l = rgyxContract.methods.shareholders.length;
           console.log(l);
           sharesProms.push(rgyxContract.methods.getAvailableShares().call());

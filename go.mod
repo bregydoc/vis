@@ -25,8 +25,6 @@ require (
 	github.com/huin/goupnp v1.0.0 // indirect
 	github.com/influxdata/influxdb v1.7.7 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.1 // indirect
-	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/k0kubun/pp v3.0.1+incompatible
 	github.com/karalabe/usb v0.0.0-20190819132248-550797b1cad8 // indirect
 	github.com/mattn/go-colorable v0.1.2 // indirect
 	github.com/mattn/go-isatty v0.0.9 // indirect

@@ -55,9 +55,9 @@ type newRGYParams struct {
 }
 
 type buySharesParams struct {
-	Who   string `json:"who"`
-	RGYID string `json:"rgyid"`
-	How   int64  `json:"how"`
+	InvestorID string `json:"investor_id"`
+	RGYID      string `json:"rgy_id"`
+	How        int64  `json:"how"`
 }
 
 func (state *RenvestgyState) launchBasicAPI(port string) {
@@ -208,12 +208,12 @@ func (state *RenvestgyState) launchBasicAPI(port string) {
 			}
 
 			params := new(buySharesParams)
-			if err = mapstructure.Decode(paramsMap, params); err != nil {
-				log.Println("Invalid Params")
-				return
-			}
 
-			err = state.SellRGYToInvestor(context.Background(), params.RGYID, common.HexToAddress(params.Who), big.NewInt(params.How))
+			params.InvestorID = paramsMap["investor_id"].(string)
+			params.RGYID = paramsMap["rgy_id"].(string)
+			params.How = int64(paramsMap["shares"].(float64))
+
+			err = state.SellRGYToInvestor(context.Background(), params.RGYID, params.InvestorID, big.NewInt(params.How))
 			if err != nil {
 				log.Println(err)
 				return

@@ -1,30 +1,47 @@
 {
   "version": "0.0.1",
-  "timestamp": "2019-08-28T13:18:29.537549-05:00",
-  "wallet_pulic_key": "0x0000000000000000000000000000000000000000",
+  "timestamp": "2019-08-28T18:36:06.870576-05:00",
+  "wallet_pulic_key": "0x6c4741e11cce3659180f062d1201317a54beff86",
   "private_key": "1676851bac4d1fd931a1c2b1628837bd9ed28620054f54bef519fd3fbdd96275",
-  "investors": [],
+  "investors": [
+    {
+      "id": "bljh2g9rcvkek3a1elt0",
+      "name": "Bregy Malpartida",
+      "wallet_public_key": "0xe550f1f1ca2207c0b8299a4ceebf002acb4f728c"
+    },
+    {
+      "id": "bljhcg1rcvkek3a1elug",
+      "name": "Esteban Ramos",
+      "wallet_public_key": "0x0665a053ab38c02aa00eaa9daec15bfca5f2aab7"
+    }
+  ],
   "developers": [
     {
-      "id": "bljcb6prcvkdkj0940q0",
-      "name": "NeoEnergy",
-      "wallet_public_key": "0xdb557378b29c23d13922040b2bf87398fb78990e",
+      "id": "bljh2l9rcvkek3a1eltg",
+      "name": "EnergyFree2020",
+      "wallet_public_key": "0x4abb8af40710ef2af7592692effbe29ac9be3e21",
       "rgy": {
-        "id": "bljcb9hrcvkdkj0940qg",
-        "developer_id": "bljcb6prcvkdkj0940q0",
-        "developer": "NeoEnergy",
-        "name": "RGYN",
-        "contract_address": "0x9340467ad8adf9a3dfb94bd8beb838d6b6411f2f"
+        "id": "bljh2r9rcvkek3a1elu0",
+        "developer_id": "bljh2l9rcvkek3a1eltg",
+        "developer": "EnergyFree2020",
+        "name": "RGYF2020",
+        "contract_address": "0x67edeb6f2111759f5736caec9a82002bd1b34edc"
       }
+    },
+    {
+      "id": "bljhcrhrcvkek3a1elv0",
+      "name": "New Wave energy",
+      "wallet_public_key": "0x964260144c76e08ba69a6e172ebe47419c50ed54",
+      "rgy": null
     }
   ],
   "rgys": [
     {
-      "id": "bljcb9hrcvkdkj0940qg",
-      "developer_id": "bljcb6prcvkdkj0940q0",
-      "developer": "NeoEnergy",
-      "name": "RGYN",
-      "contract_address": "0x9340467ad8adf9a3dfb94bd8beb838d6b6411f2f"
+      "id": "bljh2r9rcvkek3a1elu0",
+      "developer_id": "bljh2l9rcvkek3a1eltg",
+      "developer": "EnergyFree2020",
+      "name": "RGYF2020",
+      "contract_address": "0x67edeb6f2111759f5736caec9a82002bd1b34edc"
     }
   ]
 }

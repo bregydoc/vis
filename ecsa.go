@@ -11,7 +11,25 @@ import (
 	"errors"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
 )
+
+func (state *RenvestgyState) calculatePublicKey(c context.Context) (*common.Address, error) {
+	privateKey, err := crypto.HexToECDSA(state.PrivateKey)
+	if err != nil {
+		return nil, err
+	}
+
+	publicKey := privateKey.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		return nil, errors.New("error casting public key to ECDSA")
+	}
+
+	fromAddress := crypto.PubkeyToAddress(*publicKeyECDSA)
+
+	return &fromAddress, nil
+}
 
 func (state *RenvestgyState) getAuthFromPrivateKey(c context.Context) (*bind.TransactOpts, error) {
 	privateKey, err := crypto.HexToECDSA(state.PrivateKey)

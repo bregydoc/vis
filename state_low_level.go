@@ -23,3 +23,12 @@ func (state *RenvestgyState) getRGYXByID(id string) (*RGYx, error) {
 
 	return nil, errors.New("rgyx id not found")
 }
+
+func (state *RenvestgyState) getInvestorByID(id string) (*Investor, error) {
+	for _, i := range state.Investors {
+		if i.ID == id {
+			return i, nil
+		}
+	}
+	return nil, errors.New("investor id not found")
+}

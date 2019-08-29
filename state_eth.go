@@ -143,7 +143,7 @@ func (state *RenvestgyState) CreateNewRGYx(c context.Context, developerID string
 }
 
 // SellRGYToInvestor transfer shares o
-func (state *RenvestgyState) SellRGYToInvestor(c context.Context, rgyxID string, to common.Address, how *big.Int) error {
+func (state *RenvestgyState) SellRGYToInvestor(c context.Context, rgyxID string, investorID string, how *big.Int) error {
 	auth, err := state.getAuthFromPrivateKey(c)
 	if err != nil {
 		return err
@@ -158,7 +158,13 @@ func (state *RenvestgyState) SellRGYToInvestor(c context.Context, rgyxID string,
 	if err != nil {
 		return err
 	}
-	_, err = r.SellShares(auth, to, how)
+
+	investor, err := state.getInvestorByID(investorID)
+	if err != nil {
+		return err
+	}
+
+	_, err = r.SellShares(auth, investor.WalletPublicKey, how)
 	if err != nil {
 		return err
 	}
@@ -177,6 +183,6 @@ func (state *RenvestgyState) GetBalanceOf(c context.Context, rgyxID string, addr
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return r.Balance(nil, addr)
 }

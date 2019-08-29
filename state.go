@@ -70,6 +70,13 @@ func NewRenvestgyState(c context.Context, baseURL string, privateKey string, eve
 		s.Developers = []*Developer{}
 		s.RGYs = []*RGYx{}
 
+		publicKey, err := s.calculatePublicKey(c)
+		if err != nil {
+			return nil, err
+		}
+
+		s.WalletPulicKey = *publicKey
+
 		err = s.saveState(".")
 		if err != nil {
 			return nil, err

@@ -16,7 +16,9 @@ export default props => {
   return (
     <Box margin="medium">
       <Box margin={{ bottom: "small" }}>
-        <Heading level="2">CREATE NEW DEVELOPER</Heading>
+        <Heading level="2">
+          {props.title ? props.title : "CREATE NEW DEVELOPER"}
+        </Heading>
       </Box>
       <Form
         onSubmit={e => (props.onSubmit ? props.onSubmit(e.value) : null)}

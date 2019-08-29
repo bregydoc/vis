@@ -10,6 +10,12 @@ const theme = {
       family: "Roboto",
       size: "14px",
       height: "20px"
+    },
+    colors: {
+      brand: "#4a65f5",
+      "neutral-1": "#3debc3",
+      "neutral-2": "#478ae7",
+      "neutral-3": "#ff2c69"
     }
   }
 };
