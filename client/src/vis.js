@@ -295,11 +295,13 @@ export default props => {
             <Text size="small">{classicState.private_key}</Text>
           </Box>
         </Box>
-        <Box>
-          <Button
-            label={"Buy RGY to investor"}
-            onClick={() => setShowBuyRGYx(true)}
-          ></Button>
+        <Box margin={{ vertical: "medium" }} direction="column">
+          <Box>
+            <Button
+              label={"Buy RGY to investor"}
+              onClick={() => setShowBuyRGYx(true)}
+            />
+          </Box>
         </Box>
       </Box>
     </Grid>

@@ -1,47 +1,42 @@
 {
   "version": "0.0.1",
-  "timestamp": "2019-08-28T18:36:06.870576-05:00",
-  "wallet_pulic_key": "0x6c4741e11cce3659180f062d1201317a54beff86",
-  "private_key": "1676851bac4d1fd931a1c2b1628837bd9ed28620054f54bef519fd3fbdd96275",
+  "timestamp": "2019-08-29T18:57:15.201477-05:00",
+  "wallet_pulic_key": "0x6c167953fed1d700716f2dbc9d4e349db4f070a9",
+  "private_key": "dfd5be1b32cbe936876dc9c5c4011f8ca6aa88106923c3bbd458258014898cf1",
   "investors": [
     {
-      "id": "bljh2g9rcvkek3a1elt0",
+      "id": "blk6echrcvk0745lfd7g",
       "name": "Bregy Malpartida",
-      "wallet_public_key": "0xe550f1f1ca2207c0b8299a4ceebf002acb4f728c"
-    },
-    {
-      "id": "bljhcg1rcvkek3a1elug",
-      "name": "Esteban Ramos",
-      "wallet_public_key": "0x0665a053ab38c02aa00eaa9daec15bfca5f2aab7"
+      "wallet_public_key": "0x6d6dc24674663e0eececb39983c2b9c1c04211cf"
     }
   ],
   "developers": [
     {
-      "id": "bljh2l9rcvkek3a1eltg",
-      "name": "EnergyFree2020",
-      "wallet_public_key": "0x4abb8af40710ef2af7592692effbe29ac9be3e21",
+      "id": "blk6ejhrcvk0745lfd80",
+      "name": "Luz del Sur",
+      "wallet_public_key": "0x461d44695b9433dee8db842ca7593151f9217d25",
       "rgy": {
-        "id": "bljh2r9rcvkek3a1elu0",
-        "developer_id": "bljh2l9rcvkek3a1eltg",
-        "developer": "EnergyFree2020",
-        "name": "RGYF2020",
-        "contract_address": "0x67edeb6f2111759f5736caec9a82002bd1b34edc"
+        "id": "blk6gdhrcvk0745lfd8g",
+        "developer_id": "blk6ejhrcvk0745lfd80",
+        "developer": "Luz del Sur",
+        "name": "RGYLS",
+        "contract_address": "0xd5829fc422ae42fe48312e93a533043860e1c882"
       }
     },
     {
-      "id": "bljhcrhrcvkek3a1elv0",
-      "name": "New Wave energy",
-      "wallet_public_key": "0x964260144c76e08ba69a6e172ebe47419c50ed54",
+      "id": "blk6m99rcvk0745lfd90",
+      "name": "AAA",
+      "wallet_public_key": "0xe6109015bea1a213d082f6b9d1156d52e7d169e0",
       "rgy": null
     }
   ],
   "rgys": [
     {
-      "id": "bljh2r9rcvkek3a1elu0",
-      "developer_id": "bljh2l9rcvkek3a1eltg",
-      "developer": "EnergyFree2020",
-      "name": "RGYF2020",
-      "contract_address": "0x67edeb6f2111759f5736caec9a82002bd1b34edc"
+      "id": "blk6gdhrcvk0745lfd8g",
+      "developer_id": "blk6ejhrcvk0745lfd80",
+      "developer": "Luz del Sur",
+      "name": "RGYLS",
+      "contract_address": "0xd5829fc422ae42fe48312e93a533043860e1c882"
     }
   ]
 }

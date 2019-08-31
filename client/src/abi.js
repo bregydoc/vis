@@ -29,6 +29,15 @@ export const abi = [
   {
     constant: true,
     inputs: [],
+    name: "getTotalShareholders",
+    outputs: [{ name: "", type: "uint256" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    constant: true,
+    inputs: [],
     name: "getAvailableShares",
     outputs: [{ name: "", type: "uint256" }],
     payable: false,

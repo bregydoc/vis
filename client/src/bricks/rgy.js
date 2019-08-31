@@ -48,10 +48,10 @@ export default props => {
               <Text
                 size="small"
                 color="neutral-2"
-                margin={{ right: "small", top: "small", bottom: "small" }}
+                margin={{ right: "small", top: "xxsmall", bottom: "xxsmall" }}
                 alignSelf="center"
               >
-                Investor {i}:
+                Investor {i + 1}:
               </Text>
               <Text color="dark-1" size="small" alignSelf="center">
                 {inv.address}

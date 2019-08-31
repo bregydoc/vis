@@ -27,6 +27,18 @@ export default props => {
             {props.id}
           </Text>
         </Box>
+        <Box
+          margin={{ left: "auto", right: "xxsmall", vertical: "xsmall" }}
+          justify="center"
+          direction="column"
+        >
+          <Text size="medium" alignSelf="center" justify="center">
+            Credits
+          </Text>
+          <Text size="medium" color="dark-2">
+            $ 200.00
+          </Text>
+        </Box>
       </Box>
       <Box margin={{ vertical: "small" }} width="auto">
         <Box direction="row">

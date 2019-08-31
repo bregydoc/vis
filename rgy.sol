@@ -75,4 +75,8 @@ contract RGYx {
   function getGenesis() public view returns (uint256) {
     return genesisShares;
   }
+
+  function getTotalShareholders() public view returns (uint256) {
+    return shareholders.length;
+  }
 }
